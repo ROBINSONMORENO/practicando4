@@ -10,10 +10,7 @@ namespace apppracticando.Models
         public string Titulo { get; set; }
 
         public string Foto { get; set; }
-
-
         public DateTime Fecha { get; set; }
-
 
         public string Usuario { get; set; }
 
