@@ -11,16 +11,19 @@ namespace apppracticando.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly apppracticandoContext _context;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+          public HomeController(apppracticandoContext context, ILogger<HomeController> logger)
         {
+            _context = context;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var fails = _context.Fail.Where(x => x.Fecha.AddDays(5) >= DateTime.Now).ToList();
+            return View(fails);
         }
 
         public IActionResult Ingreso()
